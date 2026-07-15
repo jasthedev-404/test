@@ -1,0 +1,229 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+background:linear-gradient(135deg,#ffd6e8,#fff4f8);
+
+overflow-y: auto;
+overflow-x: hidden;
+
+}
+
+.title{
+
+color:#ff4d94;
+
+margin-bottom:35px;
+
+font-size:40px;
+
+}
+
+.card{
+
+width:360px;
+
+height:240px;
+
+background:white;
+
+border-radius:25px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+
+transition:.8s;
+
+overflow:hidden;
+
+}
+
+.card.open{
+    width:500px;
+    height:85vh;
+    overflow:hidden;
+}
+
+.heart{
+    font-size:55px;
+    cursor:pointer;
+    z-index:10;
+    position:relative;
+
+    animation:beat 1s infinite;
+}
+
+.heart:hover{
+
+transform:scale(1.15);
+
+}
+
+.card.open .heart{
+
+opacity:0;
+
+transform:scale(2);
+
+}
+
+@keyframes beat{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+}
+
+.letter{
+    position:absolute;
+    top:40px;
+    left:30px;
+    right:30px;
+    bottom:30px;
+
+    opacity:0;
+    pointer-events:none;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding-right:10px;
+    box-sizing:border-box;
+
+    transition:1s;
+}
+
+.card.open .letter{
+    opacity:1;
+    pointer-events:auto;
+}
+
+h2{
+
+text-align:center;
+
+color:#ff4d94;
+
+margin-bottom:25px;
+
+}
+
+#message{
+
+line-height:1.8;
+
+white-space:pre-wrap;
+
+font-size:17px;
+
+}
+
+/* Floating Hearts */
+
+#floating-hearts{
+
+position:fixed;
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.floating-heart{
+
+position:absolute;
+
+font-size:20px;
+
+animation:floatUp linear forwards;
+
+opacity:.8;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+transform:translateY(0) scale(.5);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-110vh) scale(1.4);
+
+opacity:0;
+
+}
+
+}
+
+.letter::-webkit-scrollbar{
+    width:6px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#ff80b5;
+    border-radius:20px;
+}
+
+.letter::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+#message::after{
+    content:"|";
+    animation:blink .8s infinite;
+    color:#ff4d94;
+    font-weight:bold;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+
+}

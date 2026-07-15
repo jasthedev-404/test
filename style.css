@@ -1,0 +1,899 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:linear-gradient(135deg,#ffd6e8,#ffeef5);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:500px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+    color:#ff4f92;
+
+    margin-bottom:15px;
+
+}
+
+.subtitle{
+
+    color:#666;
+
+    margin-bottom:25px;
+
+}
+
+.photo{
+
+    width:220px;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+
+}
+
+button{
+
+    border:none;
+
+    background:#ff4f92;
+
+    color:white;
+
+    padding:15px 30px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+#secretHeart{
+
+    margin-top:40px;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+.envelope{
+    width:320px;
+    height:220px;
+
+    background:#ff6b9d;
+
+    margin:30px auto;
+
+    border-radius:10px;
+
+    position:relative;
+
+    display:none;
+
+    animation:pop .8s;
+}
+
+.letter{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+
+    height:90%;
+
+    background:white;
+
+    border-radius:8px;
+
+    padding:20px;
+
+    box-sizing:border-box;
+
+    animation:slideUp 2s forwards;
+
+}
+
+@keyframes slideUp{
+
+    from{
+        transform:translate(-50%,100%);
+    }
+
+    to{
+        transform:translate(-50%,0%);
+    }
+
+}
+
+@keyframes pop{
+
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+.fade{
+
+    animation:fadeOut 1s forwards;
+
+}
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+.secret-message{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0.8);
+    background:white;
+    color:#ff4f88;
+    padding:20px 30px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+    font-size:22px;
+    font-weight:bold;
+    text-align:center;
+
+    opacity:0;
+    pointer-events:none;
+    transition:.4s;
+    z-index:9999;
+}
+
+.secret-message.show{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+/* Night Mode */
+
+body.night {
+    background: linear-gradient(to bottom, #071124, #1b1f4b);
+    transition: 1s;
+}
+
+body.night::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 2px, transparent 2px);
+
+    background-size:120px 120px,180px 180px,250px 250px;
+    opacity:.8;
+    pointer-events:none;
+}
+
+#nightMessage{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:white;
+    color:#ff4f88;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    opacity:0;
+    transition:.5s;
+    z-index:9999;
+}
+
+#nightMessage.show{
+    opacity:1;
+}
+
+#lovePopup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.8);
+
+    background: white;
+    color: #ff4f88;
+
+    padding: 25px 40px;
+    border-radius: 25px;
+
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.3);
+
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 99999;
+}
+
+#lovePopup.show{
+    animation: popupFade 4s forwards;
+}
+
+@keyframes popupFade{
+    0%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.8);
+    }
+
+    15%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    75%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.8);
+    }
+}
+
+#secretHeart{
+    cursor:pointer;
+    user-select:none;
+    transition:.2s;
+}
+
+#secretHeart:hover{
+    transform:scale(1.2);
+}
+
+#secretHeart.boom{
+    animation:heartBoom .7s;
+}
+
+@keyframes heartBoom{
+
+    0%{
+        transform:scale(1);
+    }
+
+    30%{
+        transform:scale(2);
+    }
+
+    100%{
+        transform:scale(0);
+    }
+
+}
+
+#heartPopup{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%) scale(.8);
+
+    background:white;
+
+    color:#ff4f88;
+
+    padding:20px 35px;
+
+    border-radius:25px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+}
+
+#heartPopup.show{
+
+    animation:popupFade 3s forwards;
+
+}
+
+#loveMeter{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    cursor:pointer;
+
+    width:220px;
+
+    text-align:center;
+
+    user-select:none;
+
+    z-index:9999;
+
+}
+
+#meterBar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#ffd6e8;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin:10px 0;
+
+}
+
+#meterFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#ff4f92;
+
+    transition:.5s;
+
+}
+
+#infiniteLove{
+    position:fixed;
+    inset:0;
+    background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    color:white;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.6s;
+
+    z-index:999999;
+}
+
+#infiniteLove.show{
+    opacity:1;
+    visibility:visible;
+}
+
+#infiniteLove h1{
+
+    font-size:70px;
+
+    color:#ff7ab5;
+
+    margin:15px 0;
+
+}
+
+#infiniteLove h2{
+
+    color:white;
+
+}
+
+#infiniteLove p{
+
+    font-size:22px;
+
+    margin:15px 0;
+
+}
+
+@keyframes fadeBlack{
+
+    0%{
+        background:rgba(255,192,203,.1);
+    }
+
+    35%{
+        background:rgba(60,0,30,.85);
+    }
+
+    100%{
+        background:black;
+    }
+
+}
+
+/* ===========================
+   Secret Princess Quiz
+=========================== */
+
+#secretButton{
+    cursor:pointer;
+    display:inline-block;
+    transition:.25s;
+}
+
+#secretButton:hover{
+    transform:scale(1.3);
+}
+
+#secretQuiz{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:99999;
+}
+
+#secretQuiz.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.quizBox{
+
+    width:360px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 0 40px hotpink;
+
+    animation:popup .3s;
+}
+
+.quizBox h2{
+
+    color:#ff4f94;
+
+}
+
+.quizText{
+
+    margin:15px 0;
+
+    color:#555;
+
+}
+
+.quizQuestion{
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+}
+
+.quizBox input{
+
+    width:90%;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    border:2px solid hotpink;
+
+    margin-bottom:20px;
+
+}
+
+.quizBox button{
+
+    background:#ff4f94;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+.quizBox button:hover{
+
+    transform:scale(1.05);
+
+}
+
+#quizMessage{
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+
+transform:scale(.7);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+/* Secret Popup */
+
+#secretPopup{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:999999;
+}
+
+#secretPopup.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.secretBox{
+
+    width:340px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 0 30px hotpink;
+
+    animation:popup .3s ease;
+
+}
+
+.secretBox h2{
+    color:#ff4fa0;
+}
+
+.secretBox p{
+    margin:18px 0;
+}
+
+.secretBox input{
+
+    width:90%;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    border:2px solid hotpink;
+
+}
+
+.secretBox button{
+
+    margin-top:15px;
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#ff4fa0;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+#secretMessage{
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+@keyframes popup{
+
+from{
+
+transform:scale(.8);
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+opacity:1;
+
+}
+
+}
+
+#secretSurprise{
+    position:fixed;
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.6s;
+
+    z-index:9999999;
+
+    color:white;
+    text-align:center;
+}
+
+#secretSurprise.show{
+    opacity:1;
+    visibility:visible;
+}
+
+#couplePic{
+    width:250px;
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 0 35px hotpink;
+}
+
+#secretLetter{
+
+    max-width:500px;
+
+    margin-top:20px;
+
+    padding:20px;
+
+    line-height:1.8;
+
+    font-size:18px;
+}
+
+.countdown{
+
+    margin-top:10px;
+
+    color:pink;
+
+    font-size:15px;
+}
+
+#couplePic{
+
+    width:250px;
+
+    border-radius:20px;
+
+    opacity:0;
+
+    transform:scale(.7);
+
+    transition:.8s;
+
+    box-shadow:0 0 40px hotpink;
+
+}
+
+#secretSurprise.show #couplePic{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+#secretLetter{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s;
+
+    transition-delay:.8s;
+
+}
+
+#secretSurprise.show #secretLetter{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+#closeSurprise{
+    margin-top:30px;
+    padding:14px 35px;
+
+    border:none;
+    border-radius:40px;
+
+    background:#ff4f9d;
+    color:white;
+
+    font-size:17px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#closeSurprise:hover{
+    transform:scale(1.08);
+    background:#ff2f87;
+    box-shadow:0 0 25px hotpink;
+}
+
+.quizBox{
+    position: relative;
+}
+
+#closeQuiz{
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    border: none;
+    background: transparent;
+
+    color: #ff4f9d;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+
+    cursor: pointer;
+
+    padding: 0;
+    margin: 0;
+
+    transition: .2s;
+}
+
+#closeQuiz:hover{
+    color: #ff1f75;
+    transform: scale(1.2);
+}
